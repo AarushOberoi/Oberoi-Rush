@@ -13674,7 +13674,7 @@ function rc(e, t=`idle`, n=``) {
 }
 function ic() {
     let[e,...t] = l.name.toUpperCase().split(` `);
-    return `<svg class="logo" viewBox="0 0 680 172" role="img" aria-label="${F(l.name)}, ${F(l.tagline.toLowerCase())}"><circle cx="76" cy="86" r="70" fill="${l.colors.panel}"/><svg x="8" y="18" width="136" height="136" viewBox="30 2 140 140">${Xs(I.avatar)}</svg><text x="172" y="104" textLength="490" lengthAdjust="spacingAndGlyphs" class="logo-word"><tspan>${F(e)}</tspan> <tspan class="logo-accent">${F(t.join(` `))}</tspan></text><g transform="translate(174 128) scale(.82)"><rect x="1.5" y="1.5" width="37" height="37" rx="9" fill="#000000" stroke="#000000" stroke-width="3"/><image href="logo.png" x="1" y="1" width="38" height="38" preserveAspectRatio="xMidYMid meet"/></g><text x="214" y="150" class="logo-sub">${F(l.tagline)}</text></svg>`
+    return `<svg class="logo" viewBox="0 0 680 172" role="img" aria-label="${F(l.name)}, ${F(l.tagline.toLowerCase())}"><circle cx="76" cy="86" r="70" fill="${l.colors.panel}"/><svg x="8" y="18" width="136" height="136" viewBox="30 2 140 140">${Xs(I.avatar)}</svg><text x="172" y="104" textLength="490" lengthAdjust="spacingAndGlyphs" class="logo-word"><tspan>${F(e)}</tspan> <tspan class="logo-accent">${F(t.join(` `))}</tspan></text><g transform="translate(174 126) scale(.55)">${Gs(l.colors.purple, l.colors.white, l.colors.purple)}</g><text x="206" y="144" class="logo-sub">${F(l.tagline)}</text></svg>`
 }
 var X = (e, t, n, r) => `M${e} ${t}h${n}v${r}h${-n}z`
   , ac = {
