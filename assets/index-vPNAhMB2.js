@@ -13674,7 +13674,7 @@ function rc(e, t=`idle`, n=``) {
 }
 function ic() {
     let[e,...t] = l.name.toUpperCase().split(` `);
-    return `<svg class="logo" viewBox="0 0 680 172" role="img" aria-label="${F(l.name)}, ${F(l.tagline.toLowerCase())}"><circle cx="76" cy="86" r="70" fill="${l.colors.panel}"/><svg x="8" y="18" width="136" height="136" viewBox="30 2 140 140">${Xs(I.avatar)}</svg><text x="172" y="104" textLength="490" lengthAdjust="spacingAndGlyphs" class="logo-word"><tspan>${F(e)}</tspan> <tspan class="logo-accent">${F(t.join(` `))}</tspan></text><g transform="translate(174 126) scale(.55)">${Gs(l.colors.purple, l.colors.white, l.colors.purple)}</g><text x="206" y="144" class="logo-sub">${F(l.tagline)}</text></svg>`
+    return `<svg class="logo" viewBox="0 0 760 220" role="img" aria-label="${F(l.name)}, ${F(l.tagline.toLowerCase())}"><defs><filter id="logoShadow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="7"/></filter></defs><circle cx="120" cy="122" r="104" fill="#000" opacity=".45" filter="url(#logoShadow)"/><circle cx="112" cy="110" r="104" fill="${l.colors.panel}"/><image href="logo.png" x="24" y="55" width="176" height="110" preserveAspectRatio="xMidYMid meet"/><text x="242" y="128" textLength="490" lengthAdjust="spacingAndGlyphs" class="logo-word"><tspan>${F(e)}</tspan> <tspan class="logo-accent">${F(t.join(` `))}</tspan></text><g transform="translate(244 150) scale(.55)">${Gs(l.colors.purple, l.colors.white, l.colors.purple)}</g><text x="276" y="168" class="logo-sub">${F(l.tagline)}</text></svg>`
 }
 var X = (e, t, n, r) => `M${e} ${t}h${n}v${r}h${-n}z`
   , ac = {
