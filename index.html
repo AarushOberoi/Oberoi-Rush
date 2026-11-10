@@ -1,0 +1,290 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#101014">
+  <meta name="description" content="Oberoi Rush, a Aarush Oberoi game for the Oberoi Army. Quick play online, practice offline against bots, or squad up with friends: jetpacks, seventeen weapons and grenades across Lilyville and Oberoi SMP locations.">
+  <title>Oberoi Rush · A Aarush Oberoi game</title>
+  <link rel="preload" href="/fonts/russo-one-latin.woff2" as="font" type="font/woff2" crossorigin="">
+  <link rel="preload" href="/fonts/dm-sans-latin.woff2" as="font" type="font/woff2" crossorigin="">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Oberoi Rush">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <script type="module" crossorigin="" src="/assets/index-vPNAhMB2.js"></script>
+  <link rel="stylesheet" crossorigin="" href="/assets/index-B_tnswaV.css">
+</head>
+<body data-screen="menu">
+  <canvas id="arena" aria-label="Fleet Rush arena" width="816" height="1830"></canvas>
+  <div id="app" class="menu-shell page-home">
+    <div class="scene" aria-hidden="true">
+      <svg class="scene-art" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+        <path d="M0 700h80V900h-80zM80 700h80V900h-80zM160 660h80V900h-80zM240 660h80V900h-80zM320 660h80V900h-80zM400 650h80V900h-80zM480 690h80V900h-80zM560 690h80V900h-80zM640 730h80V900h-80zM720 690h80V900h-80zM800 650h80V900h-80zM880 690h80V900h-80zM960 730h80V900h-80zM1040 730h80V900h-80zM1120 730h80V900h-80zM1200 730h80V900h-80zM1280 750h80V900h-80zM1360 750h80V900h-80zM1440 750h80V900h-80zM1520 710h80V900h-80zM1300 900V520h32v-48h64v48h32v380zM1356 472v-96h12v96z" fill="#1a1527"></path>
+        <path d="M1356 368h12v8h-12z" fill="#ffb454" opacity=".7"></path>
+        <path d="M0 810h40V900h-40zM40 810h40V900h-40zM80 790h40V900h-40zM120 790h40V900h-40zM160 790h40V900h-40zM200 790h40V900h-40zM240 780h40V900h-40zM280 780h40V900h-40zM320 780h40V900h-40zM360 800h40V900h-40zM400 800h40V900h-40zM440 820h40V900h-40zM480 820h40V900h-40zM520 820h40V900h-40zM560 820h40V900h-40zM600 840h40V900h-40zM640 840h40V900h-40zM680 840h40V900h-40zM720 840h40V900h-40zM760 820h40V900h-40zM800 800h40V900h-40zM840 780h40V900h-40zM880 780h40V900h-40zM920 780h40V900h-40zM960 800h40V900h-40zM1000 780h40V900h-40zM1040 780h40V900h-40zM1080 780h40V900h-40zM1120 780h40V900h-40zM1160 780h40V900h-40zM1200 780h40V900h-40zM1240 780h40V900h-40zM1280 800h40V900h-40zM1320 780h40V900h-40zM1360 780h40V900h-40zM1400 780h40V900h-40zM1440 780h40V900h-40zM1480 780h40V900h-40zM1520 780h40V900h-40zM1560 800h40V900h-40z" fill="#14111d"></path>
+      </svg>
+    </div>
+    
+    <main class="page home">
+      <div class="corner corner-tl">
+        <button class="btn btn-blue cut-br corner-btn" data-action="page:armory">
+          <span>ARMORY</span>
+        </button>
+      </div>
+      
+      <div class="corner corner-tr">
+        <button class="profile-chip" data-action="page:stats" aria-label="Profile Fleet Fan, Fleet Rookie">
+          <svg class="soldier-head chip-head" viewBox="30 2 140 140" aria-hidden="true">
+            <circle cx="55" cy="82" r="9" fill="#d9a679" stroke="#141218" stroke-width="4"></circle>
+            <circle cx="145" cy="82" r="9" fill="#d9a679" stroke="#141218" stroke-width="4"></circle>
+            <circle cx="100" cy="76" r="46" fill="#d9a679" stroke="#141218" stroke-width="4.5"></circle>
+            <path d="M50 86c0-40 22-62 50-62s50 22 50 62" fill="none" stroke="#141218" stroke-width="12"></path>
+            <path d="M50 86c0-40 22-62 50-62s50 22 50 62" fill="none" stroke="#20202a" stroke-width="6"></path>
+            <path d="M55 78c-5-28 7-46 27-52 6-12 22-18 40-16 14 2 24 10 26 20-8-3-15-2-20 2 12 8 19 22 17 46-4-12-11-20-21-24-10-8-26-10-40-6-13 4-23 14-29 30z" fill="#211a20" stroke="#141218" stroke-width="3.5" stroke-linejoin="round"></path>
+            <path d="M88 28c11-10 28-13 42-8" stroke="#fff" stroke-opacity=".22" stroke-width="3" fill="none" stroke-linecap="round"></path>
+            <path d="M57 70c2 6 1 12-2 16M143 70c-2 6-1 12 2 16" stroke="#211a20" stroke-width="5" stroke-linecap="round"></path>
+            <path d="M60 92c3 16 20 28 40 28s37-12 40-28c-5 12-15 18-27 20q-13 3-26 0c-12-2-22-8-27-20z" fill="#242132" fill-opacity=".34"></path>
+            <path d="M85 97q15-6 30 0" stroke="#242132" stroke-opacity=".4" stroke-width="4" fill="none" stroke-linecap="round"></path>
+            <ellipse cx="84" cy="84" rx="7" ry="6" fill="#fff" stroke="#141218" stroke-width="2.5"></ellipse>
+            <ellipse cx="116" cy="84" rx="7" ry="6" fill="#fff" stroke="#141218" stroke-width="2.5"></ellipse>
+            <circle cx="85.5" cy="85" r="3.5" fill="#141218"></circle>
+            <circle cx="114.5" cy="85" r="3.5" fill="#141218"></circle>
+            <path d="M76 89q8 3 16 0M108 89q8 3 16 0" stroke="#9c7857" stroke-width="2.5" fill="none" stroke-linecap="round"></path>
+            <path d="M72 71q10-6 20-1M108 70q10-5 20 1" stroke="#141218" stroke-width="5" fill="none" stroke-linecap="round"></path>
+            <path d="M80 99Q100 124 120 99Z" fill="#fff" stroke="#141218" stroke-width="3" stroke-linejoin="round"></path>
+            <path d="M86 108q14 9 28 0q-14 6-28 0z" fill="#7a2a3a"></path>
+            <g fill="#e6f1ff" fill-opacity=".22" stroke-linejoin="round">
+              <rect x="68" y="73" width="29" height="22" rx="5" stroke="#141218" stroke-width="6"></rect>
+              <rect x="103" y="73" width="29" height="22" rx="5" stroke="#141218" stroke-width="6"></rect>
+              <rect x="68" y="73" width="29" height="22" rx="5" stroke="#b795f4" stroke-width="2.8"></rect>
+              <rect x="103" y="73" width="29" height="22" rx="5" stroke="#b795f4" stroke-width="2.8"></rect>
+            </g>
+            <path d="M97 80h6M72 72.5h56M68 79l-11-2M132 79l11-2" stroke="#141218" stroke-width="2.6" fill="none" stroke-linecap="round"></path>
+            <rect x="36" y="64" width="24" height="38" rx="10" fill="#20202a" stroke="#141218" stroke-width="3.5"></rect>
+            <rect x="40" y="71" width="4.5" height="24" rx="2.2" fill="#b884ff"></rect>
+            <rect x="140" y="64" width="24" height="38" rx="10" fill="#20202a" stroke="#141218" stroke-width="3.5"></rect>
+            <rect x="155.5" y="71" width="4.5" height="24" rx="2.2" fill="#b884ff"></rect>
+          </svg>
+          <span>
+            <strong>Oberoi Fan</strong>
+            <small>OBEROI ROOKIE</small>
+          </span>
+          <svg class="rank-badge" viewBox="0 0 40 46" aria-hidden="true">
+            <path d="M4 4h32v26L20 44 4 30z" fill="#6433ae" stroke="#d4b5ff" stroke-width="2.5" stroke-linejoin="round"></path>
+            <g fill="none" stroke="#ffb454" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M8 16l12-6 12 6"></path>
+            </g>
+          </svg>
+        </button>
+        
+        <button class="round-icon" data-action="install" aria-label="Install Oberoi Rush on this device">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 4v11m-4.5-4.5L12 15l4.5-4.5M5 19h14"></path>
+          </svg>
+        </button>
+        
+        <button class="round-icon fs-toggle" data-action="fullscreen" aria-label="Full screen" aria-pressed="false">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5"></path>
+          </svg>
+        </button>
+        
+        <button class="round-icon" data-action="sound" aria-label="Sound on" aria-pressed="true">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m11 5-5 4H3v6h3l5 4V5Zm4 3a6 6 0 0 1 0 8m3-11a10 10 0 0 1 0 14"></path>
+          </svg>
+        </button>
+      </div>
+      
+      <div class="logo-wrap">
+        <svg class="logo" viewBox="0 0 680 172" role="img" aria-label="Oberoi Rush, a aarush oberoi game">
+          <circle cx="76" cy="86" r="70" fill="#211b2f"></circle>
+          <svg x="8" y="18" width="136" height="136" viewBox="30 2 140 140">
+            <circle cx="55" cy="82" r="9" fill="#d9a679" stroke="#141218" stroke-width="4"></circle>
+            <circle cx="145" cy="82" r="9" fill="#d9a679" stroke="#141218" stroke-width="4"></circle>
+            <circle cx="100" cy="76" r="46" fill="#d9a679" stroke="#141218" stroke-width="4.5"></circle>
+            <path d="M50 86c0-40 22-62 50-62s50 22 50 62" fill="none" stroke="#141218" stroke-width="12"></path>
+            <path d="M50 86c0-40 22-62 50-62s50 22 50 62" fill="none" stroke="#20202a" stroke-width="6"></path>
+            <path d="M55 78c-5-28 7-46 27-52 6-12 22-18 40-16 14 2 24 10 26 20-8-3-15-2-20 2 12 8 19 22 17 46-4-12-11-20-21-24-10-8-26-10-40-6-13 4-23 14-29 30z" fill="#211a20" stroke="#141218" stroke-width="3.5" stroke-linejoin="round"></path>
+            <path d="M88 28c11-10 28-13 42-8" stroke="#fff" stroke-opacity=".22" stroke-width="3" fill="none" stroke-linecap="round"></path>
+            <path d="M57 70c2 6 1 12-2 16M143 70c-2 6-1 12 2 16" stroke="#211a20" stroke-width="5" stroke-linecap="round"></path>
+            <path d="M60 92c3 16 20 28 40 28s37-12 40-28c-5 12-15 18-27 20q-13 3-26 0c-12-2-22-8-27-20z" fill="#242132" fill-opacity=".34"></path>
+            <path d="M85 97q15-6 30 0" stroke="#242132" stroke-opacity=".4" stroke-width="4" fill="none" stroke-linecap="round"></path>
+            <ellipse cx="84" cy="84" rx="7" ry="6" fill="#fff" stroke="#141218" stroke-width="2.5"></ellipse>
+            <ellipse cx="116" cy="84" rx="7" ry="6" fill="#fff" stroke="#141218" stroke-width="2.5"></ellipse>
+            <circle cx="85.5" cy="85" r="3.5" fill="#141218"></circle>
+            <circle cx="114.5" cy="85" r="3.5" fill="#141218"></circle>
+            <path d="M76 89q8 3 16 0M108 89q8 3 16 0" stroke="#9c7857" stroke-width="2.5" fill="none" stroke-linecap="round"></path>
+            <path d="M72 71q10-6 20-1M108 70q10-5 20 1" stroke="#141218" stroke-width="5" fill="none" stroke-linecap="round"></path>
+            <path d="M80 99Q100 124 120 99Z" fill="#fff" stroke="#141218" stroke-width="3" stroke-linejoin="round"></path>
+            <path d="M86 108q14 9 28 0q-14 6-28 0z" fill="#7a2a3a"></path>
+            <g fill="#e6f1ff" fill-opacity=".22" stroke-linejoin="round">
+              <rect x="68" y="73" width="29" height="22" rx="5" stroke="#141218" stroke-width="6"></rect>
+              <rect x="103" y="73" width="29" height="22" rx="5" stroke="#141218" stroke-width="6"></rect>
+              <rect x="68" y="73" width="29" height="22" rx="5" stroke="#b795f4" stroke-width="2.8"></rect>
+              <rect x="103" y="73" width="29" height="22" rx="5" stroke="#b795f4" stroke-width="2.8"></rect>
+            </g>
+            <path d="M97 80h6M72 72.5h56M68 79l-11-2M132 79l11-2" stroke="#141218" stroke-width="2.6" fill="none" stroke-linecap="round"></path>
+            <rect x="36" y="64" width="24" height="38" rx="10" fill="#20202a" stroke="#141218" stroke-width="3.5"></rect>
+            <rect x="40" y="71" width="4.5" height="24" rx="2.2" fill="#b884ff"></rect>
+            <rect x="140" y="64" width="24" height="38" rx="10" fill="#20202a" stroke="#141218" stroke-width="3.5"></rect>
+            <rect x="155.5" y="71" width="4.5" height="24" rx="2.2" fill="#b884ff"></rect>
+          </svg>
+          <text x="172" y="104" textLength="490" lengthAdjust="spacingAndGlyphs" class="logo-word">
+            <tspan>OBEROI</tspan> 
+            <tspan class="logo-accent">RUSH</tspan>
+          </text>
+          <g transform="translate(174 126) scale(.55)">
+            <rect x="1.5" y="1.5" width="37" height="37" rx="9" fill="#a565ff" stroke="#a565ff" stroke-width="3"></rect>
+            <path d="M18 12.5h-6.5a5 5 0 0 0-5 5v5a5 5 0 0 0 5 5H18v-7.5h-5M23 27.5v-15h11M23 20h8.5" fill="none" stroke="#f5f3fa" stroke-width="4.6" stroke-linecap="square" stroke-linejoin="miter"></path>
+          </g>
+          <text x="206" y="144" class="logo-sub">A AARUSH OBEROI GAME</text>
+        </svg>
+      </div>
+      
+      <div class="arcade-pilot" aria-hidden="true">
+        <div class="pilot-orbit"></div>
+        <svg class="soldier arcade-pilot-art" viewBox="20 4 160 224" aria-hidden="true">
+          <defs>
+            <pattern id="sv2s" width="20" height="20" patternUnits="userSpaceOnUse">
+              <rect width="20" height="20" fill="#24212d"></rect>
+            </pattern>
+            <pattern id="sv2p" width="20" height="20" patternUnits="userSpaceOnUse">
+              <rect width="20" height="20" fill="#36313e"></rect>
+            </pattern>
+            <linearGradient id="sv2f" x1="1" x2="0" y1="0" y2="0">
+              <stop offset="0" stop-color="#fff6e0"></stop>
+              <stop offset=".2" stop-color="#ffd27a"></stop>
+              <stop offset=".65" stop-color="#ffb454" stop-opacity=".85"></stop>
+              <stop offset="1" stop-color="#a565ff" stop-opacity="0"></stop>
+            </linearGradient>
+          </defs>
+          <ellipse cx="100" cy="221" rx="52" ry="6" fill="#000" opacity=".32"></ellipse>
+          <rect x="58" y="100" width="14" height="34" rx="6" fill="#2b2636" stroke="#141218" stroke-width="3.5"></rect>
+          <rect x="61" y="104" width="8" height="5" rx="2" fill="#a565ff"></rect>
+          <rect x="128" y="100" width="14" height="34" rx="6" fill="#2b2636" stroke="#141218" stroke-width="3.5"></rect>
+          <rect x="131" y="104" width="8" height="5" rx="2" fill="#a565ff"></rect>
+          <path d="M79 164h20l-1 32H80z" fill="url(#sv2p)" stroke="#141218" stroke-width="4" stroke-linejoin="round"></path>
+          <path d="M101 164h20l-1 32h-18z" fill="url(#sv2p)" stroke="#141218" stroke-width="4" stroke-linejoin="round"></path>
+          <rect x="79" y="191" width="20" height="8" rx="2" fill="#2a2630" stroke="#141218" stroke-width="3"></rect>
+          <rect x="101" y="191" width="20" height="8" rx="2" fill="#2a2630" stroke="#141218" stroke-width="3"></rect>
+          <path d="M66 211c0-8 6-14 14-14h20v14z" fill="#eee9f3" stroke="#141218" stroke-width="3.5" stroke-linejoin="round"></path>
+          <path d="M84 201l7 2M86 205l7 2" stroke="#a565ff" stroke-width="2.2" stroke-linecap="round"></path>
+          <path d="M63 210h37v6c0 2-2 4-4 4H67c-3 0-4-2-4-4z" fill="#f5f3fa" stroke="#141218" stroke-width="3.5" stroke-linejoin="round"></path>
+          <g transform="matrix(-1 0 0 1 200 0)">
+            <path d="M66 211c0-8 6-14 14-14h20v14z" fill="#eee9f3" stroke="#141218" stroke-width="3.5" stroke-linejoin="round"></path>
+            <path d="M84 201l7 2M86 205l7 2" stroke="#a565ff" stroke-width="2.2" stroke-linecap="round"></path>
+            <path d="M63 210h37v6c0 2-2 4-4 4H67c-3 0-4-2-4-4z" fill="#f5f3fa" stroke="#141218" stroke-width="3.5" stroke-linejoin="round"></path>
+          </g>
+          <rect x="64" y="110" width="72" height="62" rx="18" fill="url(#sv2s)" stroke="#141218" stroke-width="4.5"></rect>
+          <path d="M74 113c8 8 44 8 52 0" fill="#54525b" stroke="#141218" stroke-width="3.5" stroke-linejoin="round"></path>
+          <path d="M93 119v12M107 119v12" stroke="#f5f3fa" stroke-width="2.6" stroke-linecap="round"></path>
+          <circle cx="93" cy="132" r="2.2" fill="#a96cf3"></circle>
+          <circle cx="107" cy="132" r="2.2" fill="#a96cf3"></circle>
+          <path d="M80 148h40l5 13H75z" fill="#3a3742" stroke="#141218" stroke-opacity=".55" stroke-width="2.5" stroke-linejoin="round"></path>
+          <g transform="translate(91 134) scale(0.45)">
+            <rect x="1.5" y="1.5" width="37" height="37" rx="9" fill="#a96cf3" stroke="#141218" stroke-width="3.4"></rect>
+            <path d="M18 12.5h-6.5a5 5 0 0 0-5 5v5a5 5 0 0 0 5 5H18v-7.5h-5M23 27.5v-15h11M23 20h8.5" fill="none" stroke="#f5f3fa" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter"></path>
+          </g>
+          <path d="M67 164h66" stroke="#54525b" stroke-width="7"></path>
+          <path d="M70 124c-10 12-12 24-6 36" stroke="#141218" stroke-width="21" fill="none" stroke-linecap="round"></path>
+          <path d="M70 124c-10 12-12 24-6 36" stroke="url(#sv2s)" stroke-width="13" fill="none" stroke-linecap="round"></path>
+          <path d="M130 124c10 6 12 14 6 22" stroke="#141218" stroke-width="21" fill="none" stroke-linecap="round"></path>
+          <path d="M130 124c10 6 12 14 6 22" stroke="url(#sv2s)" stroke-width="13" fill="none" stroke-linecap="round"></path>
+          <g transform="translate(34 128) rotate(-20) scale(1.12)">
+            <path d="M2 17l22-5h50v12H44l-10 7H18l-4-7H2zM74 15h40v4h-40zM52 24c5 0 10 5 11 15l-8 2c-1-8-3-11-7-13z" fill="#2a2632" stroke="#141218" stroke-width="2.5" stroke-linejoin="round"></path>
+          </g>
+          <circle cx="66" cy="160" r="10" fill="#d9a679" stroke="#141218" stroke-width="4"></circle>
+          <circle cx="135" cy="146" r="10" fill="#d9a679" stroke="#141218" stroke-width="4"></circle>
+          <circle cx="55" cy="82" r="9" fill="#d9a679" stroke="#141218" stroke-width="4"></circle>
+          <circle cx="145" cy="82" r="9" fill="#d9a679" stroke="#141218" stroke-width="4"></circle>
+          <circle cx="100" cy="76" r="46" fill="#d9a679" stroke="#141218" stroke-width="4.5"></circle>
+          <path d="M50 86c0-40 22-62 50-62s50 22 50 62" fill="none" stroke="#141218" stroke-width="12"></path>
+          <path d="M50 86c0-40 22-62 50-62s50 22 50 62" fill="none" stroke="#20202a" stroke-width="6"></path>
+          <path d="M55 78c-5-28 7-46 27-52 6-12 22-18 40-16 14 2 24 10 26 20-8-3-15-2-20 2 12 8 19 22 17 46-4-12-11-20-21-24-10-8-26-10-40-6-13 4-23 14-29 30z" fill="#211a20" stroke="#141218" stroke-width="3.5" stroke-linejoin="round"></path>
+          <path d="M88 28c11-10 28-13 42-8" stroke="#fff" stroke-opacity=".22" stroke-width="3" fill="none" stroke-linecap="round"></path>
+          <path d="M57 70c2 6 1 12-2 16M143 70c-2 6-1 12 2 16" stroke="#211a20" stroke-width="5" stroke-linecap="round"></path>
+          <path d="M60 92c3 16 20 28 40 28s37-12 40-28c-5 12-15 18-27 20q-13 3-26 0c-12-2-22-8-27-20z" fill="#242132" fill-opacity=".34"></path>
+          <path d="M85 97q15-6 30 0" stroke="#242132" stroke-opacity=".4" stroke-width="4" fill="none" stroke-linecap="round"></path>
+          <ellipse cx="84" cy="84" rx="7" ry="6" fill="#fff" stroke="#141218" stroke-width="2.5"></ellipse>
+          <ellipse cx="116" cy="84" rx="7" ry="6" fill="#fff" stroke="#141218" stroke-width="2.5"></ellipse>
+          <circle cx="85.5" cy="85" r="3.5" fill="#141218"></circle>
+          <circle cx="114.5" cy="85" r="3.5" fill="#141218"></circle>
+          <path d="M76 89q8 3 16 0M108 89q8 3 16 0" stroke="#9c7857" stroke-width="2.5" fill="none" stroke-linecap="round"></path>
+          <path d="M72 71q10-6 20-1M108 70q10-5 20 1" stroke="#141218" stroke-width="5" fill="none" stroke-linecap="round"></path>
+          <path d="M80 99Q100 124 120 99Z" fill="#fff" stroke="#141218" stroke-width="3" stroke-linejoin="round"></path>
+          <path d="M86 108q14 9 28 0q-14 6-28 0z" fill="#7a2a3a"></path>
+          <g fill="#e6f1ff" fill-opacity=".22" stroke-linejoin="round">
+            <rect x="68" y="73" width="29" height="22" rx="5" stroke="#141218" stroke-width="6"></rect>
+            <rect x="103" y="73" width="29" height="22" rx="5" stroke="#141218" stroke-width="6"></rect>
+            <rect x="68" y="73" width="29" height="22" rx="5" stroke="#b795f4" stroke-width="2.8"></rect>
+            <rect x="103" y="73" width="29" height="22" rx="5" stroke="#b795f4" stroke-width="2.8"></rect>
+          </g>
+          <path d="M97 80h6M72 72.5h56M68 79l-11-2M132 79l11-2" stroke="#141218" stroke-width="2.6" fill="none" stroke-linecap="round"></path>
+          <rect x="36" y="64" width="24" height="38" rx="10" fill="#20202a" stroke="#141218" stroke-width="3.5"></rect>
+          <rect x="40" y="71" width="4.5" height="24" rx="2.2" fill="#b884ff"></rect>
+          <rect x="140" y="64" width="24" height="38" rx="10" fill="#20202a" stroke="#141218" stroke-width="3.5"></rect>
+          <rect x="155.5" y="71" width="4.5" height="24" rx="2.2" fill="#b884ff"></rect>
+        </svg>
+        <span>GEAR UP. GO WILD.</span>
+      </div>
+      
+      <div class="arcade-stickers" aria-hidden="true">
+        <span>JET. SHOOT. REPEAT.</span>
+        <b>BIG GUNS<br>BIG ENERGY</b>
+        <small>YOUR ARENA. YOUR RULES.</small>
+      </div>
+      
+      <nav class="home-main" aria-label="Play">
+        <div id="online-count" class="online-count" role="status" aria-live="polite">7 PLAYERS ONLINE</div>
+        <button class="btn btn-gold cut-top play-btn" data-action="page:online">
+          <span>PLAY ONLINE</span>
+        </button>
+        <button class="btn btn-blue cut-none play-btn" data-action="quick-bots">
+          <span>PLAY VS BOTS</span>
+        </button>
+        <button class="btn btn-blue cut-bottom play-btn" data-action="page:local">
+          <span>CUSTOM BATTLE</span>
+        </button>
+        <p class="home-meta">LILYVILLE OUTPOST · DM · 4 BOTS<br>A / D MOVE · SPACE JETPACK · MOUSE AIM + FIRE</p>
+        
+        <button class="challenge-chip" data-action="page:stats" aria-label="Daily Fleet challenges, 0 of 3 done">
+          <svg class="ic" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m12 3 2.6 5.6 6.1.7-4.5 4.2 1.2 6L12 16.6 6.6 19.5l1.2-6-4.5-4.2 6.1-.7Z"></path>
+          </svg>
+          <span>DAILY CHALLENGES</span>
+          <b>0/3</b>
+        </button>
+        <p class="phone-tip">TWO THUMBS TO PLAY · TURN PHONE SIDEWAYS FOR MORE ROOM</p>
+      </nav>
+      
+      <footer class="home-foot">FLEET ARMY EDITION · ONLINE ROOMS + BOT BATTLES</footer>
+      
+      <div class="corner corner-bl">
+        <button class="btn btn-blue cut-br corner-btn" data-action="page:avatar">
+          <span>AVATAR</span>
+        </button>
+        <button class="btn btn-blue cut-br corner-btn" data-action="settings">
+          <span>SETTINGS</span>
+        </button>
+      </div>
+      
+      <div class="corner corner-br">
+        <button class="btn btn-blue cut-bl corner-btn" data-action="training">
+          <span>TUTORIAL</span>
+        </button>
+        <button class="btn btn-blue cut-bl corner-btn" data-action="page:stats">
+          <span>STATS</span>
+        </button>
+      </div>
+    </main>
+    
+    <div id="modal-root"></div>
+  </div>
+  
+  <div id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
