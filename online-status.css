@@ -1,0 +1,19 @@
+.play-btn.online-unavailable,
+.play-btn.online-unavailable:disabled {
+  --fill: #102c3e;
+  --line: #778c9c;
+  --text: #b6c7d0;
+  background: #102c3e;
+  border-color: #778c9c;
+  box-shadow: 0 5px #0b1023;
+  filter: none;
+  opacity: 1;
+}
+
+.online-unavailable-message {
+  color: #b6c7d0;
+  font: 800 11px/1.25 system-ui, sans-serif;
+  letter-spacing: .08em;
+  margin: -8px 0 -2px;
+  text-align: center;
+}
