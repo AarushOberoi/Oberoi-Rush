@@ -1,5 +1,6 @@
 // Counts everyone who currently has Oberoi Rush open (bot matches, online rooms, menus).
-// The game POSTs /presence?id=<uuid> every 20 seconds; anyone seen in the last 50 seconds counts.
+// Every open tab POSTs /presence?id=<its own uuid> every 3 seconds (every 10 seconds when the tab is in the
+// background) and sends &leave=1 when it closes. Anyone seen in the last 20 seconds counts.
 // Needs a Redis store (Upstash, free, added from the Vercel Marketplace).
 
 // Vercel can prefix these names (for example STORAGE_KV_REST_API_URL), so look for any matching name.
@@ -10,7 +11,7 @@ function find(pattern, skip) {
 const URL_ = process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL || find(/(REST_API_URL|REDIS_REST_URL)$/);
 const TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN || find(/(REST_API_TOKEN|REDIS_REST_TOKEN)$/, /READ_ONLY/);
 const KEY = `oberoi-rush:presence`;
-const WINDOW_MS = 50000;
+const WINDOW_MS = 20000;
 
 module.exports = async (req, res) => {
     res.setHeader(`Cache-Control`, `no-store`);
@@ -30,10 +31,9 @@ module.exports = async (req, res) => {
             method: `POST`,
             headers: { Authorization: `Bearer ${TOKEN}`, "Content-Type": `application/json` },
             body: JSON.stringify([
-                [`ZADD`, KEY, String(now), id],
+                req.query.leave === `1` ? [`ZREM`, KEY, id] : [`ZADD`, KEY, String(now), id],
                 [`ZREMRANGEBYSCORE`, KEY, `0`, String(now - WINDOW_MS)],
-                [`ZCARD`, KEY],
-                [`PEXPIRE`, KEY, `120000`]
+                [`ZCARD`, KEY]
             ])
         });
         if (!r.ok) throw new Error(`store ${r.status}`);
