@@ -82,7 +82,7 @@ function r() {
                 i = !1;
                 let r = document.getElementById(`online-count`);
                 r && (r.textContent = n(),
-                r.classList.toggle(`unavailable`, e === null))
+                r.classList.remove(`unavailable`))
             }
         }
     }
