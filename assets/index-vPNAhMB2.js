@@ -50,7 +50,9 @@ window.addEventListener(`beforeinstallprompt`, function(e) { e.preventDefault();
 var e = null
   , t = !1;
 function n() {
-    let c = Math.max(1, e ?? 1);
+    if (e === null)
+        return t ? `1 PLAYER ONLINE` : `CHECKING PLAYERS...`;
+    let c = Math.max(1, e);
     if (c === 1)
         return `CHECKING PLAYERS...`;
     return `${c.toLocaleString()} PLAYERS ONLINE`
