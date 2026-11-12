@@ -50,7 +50,8 @@ window.addEventListener(`beforeinstallprompt`, function(e) { e.preventDefault();
 var e = null
   , t = !1;
 function n() {
-    return e === null ? t ? `0 PLAYERS ONLINE` : `CHECKING PLAYERS…` : `${e.toLocaleString()} ${e === 1 ? `PLAYER` : `PLAYERS`} ONLINE`
+    let c = Math.max(1, e ?? 1);
+    return `${c.toLocaleString()} ${c === 1 ? `PLAYER` : `PLAYERS`} ONLINE`
 }
 function r() {
     let r = crypto.randomUUID()
@@ -71,7 +72,7 @@ function r() {
             let data = await res.json();
             if (!Number.isSafeInteger(data.online) || data.online < 0)
                 throw Error(`Invalid count`);
-            e = data.online
+            e = Math.max(1, data.online)
         } catch {
             e = null
         } finally {
