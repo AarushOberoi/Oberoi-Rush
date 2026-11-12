@@ -15026,13 +15026,13 @@ function Ul(e) {
     n?.blur())
 }
 async function Wl(e, t) {
+    P.unlock(),
+    P.ui();
     if (e === `page:online` && onlineServerAvailable === !1) {
         q(`Play Online Unavailable.`);
         return
     }
-    if (P.unlock(),
-    P.ui(),
-    e.startsWith(`outfit:`)) {
+    if (e.startsWith(`outfit:`)) {
         let t = Number(e.slice(7));
         if (!Number.isInteger(t) || !Bc[t])
             return;
