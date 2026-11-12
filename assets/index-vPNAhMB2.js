@@ -49,18 +49,14 @@ window.addEventListener(`beforeinstallprompt`, function(e) { e.preventDefault();
 )();
 var e = null
   , t = !1
-  , onlineServerAvailable = null
+  , onlineServerAvailable = !1
   , onlineServerChecking = !1
   , onlineServerTimer = 0;
 function updateOnlinePlayButton() {
-    let e = document.querySelector(`[data-action="page:online"]`)
-      , t = document.getElementById(`online-count`)
-      , n = document.getElementById(`online-unavailable-message`);
-    e && (e.disabled = onlineServerAvailable === !1,
+    let e = document.querySelector(`[data-action="page:online"]`);
+    e && (e.disabled = !1,
     e.classList.toggle(`online-unavailable`, onlineServerAvailable === !1),
-    e.setAttribute(`aria-disabled`, onlineServerAvailable === !1 ? `true` : `false`)),
-    t && t.classList.toggle(`unavailable`, onlineServerAvailable === !1),
-    n && n.classList.toggle(`hidden`, onlineServerAvailable !== !1)
+    e.setAttribute(`aria-disabled`, onlineServerAvailable === !1 ? `true` : `false`))
 }
 function checkOnlineServer() {
     if (onlineServerChecking || document.hidden)
@@ -124,7 +120,7 @@ function r() {
             i = !1;
             let el = document.getElementById(`online-count`);
             el && (el.textContent = n(),
-            el.classList.toggle(`unavailable`, onlineServerAvailable === !1))
+            el.classList.remove(`unavailable`))
         }
     }
     function c() {
@@ -13921,8 +13917,7 @@ function xc() {
     <div class="arcade-stickers" aria-hidden="true"><span>JET. SHOOT. REPEAT.</span><b>BIG GUNS<br>BIG ENERGY</b><small>YOUR ARENA. YOUR RULES.</small></div>
     <nav class="home-main" aria-label="Play">
       <div id="online-count" class="online-count" role="status" aria-live="polite">${n()}</div>
-      ${Z(`PLAY ONLINE`, `data-action="page:online" ${onlineServerAvailable === !1 ? `disabled aria-disabled="true"` : ``}`, `gold`, `cut-top`, `play-btn ${onlineServerAvailable === !1 ? `online-unavailable` : ``}`)}
-      <p id="online-unavailable-message" class="online-unavailable-message ${onlineServerAvailable === !1 ? `` : `hidden`}" role="status">PLAY ONLINE UNAVAILABLE.</p>
+      ${Z(`PLAY ONLINE`, `data-action="page:online" aria-disabled="${onlineServerAvailable === !1}"`, `gold`, `cut-top`, `play-btn ${onlineServerAvailable === !1 ? `online-unavailable` : ``}`)}
       ${Z(`PLAY VS BOTS`, `data-action="quick-bots"`, `blue`, `cut-none`, `play-btn`)}
       ${Z(`CUSTOM BATTLE`, `data-action="page:local"`, `blue`, `cut-bottom`, `play-btn`)}
       <p class="home-meta">${F(K(e.name))} · ${F(ks(L.mode).short)} · ${L.bots || 4} BOTS<br>A / D MOVE · SPACE JETPACK · MOUSE AIM + FIRE</p>
@@ -15031,6 +15026,10 @@ function Ul(e) {
     n?.blur())
 }
 async function Wl(e, t) {
+    if (e === `page:online` && onlineServerAvailable === !1) {
+        q(`PLAY ONLINE UNAVAILABLE.`);
+        return
+    }
     if (P.unlock(),
     P.ui(),
     e.startsWith(`outfit:`)) {
