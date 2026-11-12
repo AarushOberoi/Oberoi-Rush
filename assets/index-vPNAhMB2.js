@@ -6585,7 +6585,7 @@ function pr(e) {
 var mr = (e, t=1e9) => typeof e == `number` && Number.isFinite(e) ? Math.min(t, Math.max(0, Math.floor(e))) : 0
   , hr = () => Array.from(globalThis.crypto.getRandomValues(new Uint8Array(8)), e => e.toString(16).padStart(2, `0`)).join(``);
 function gr(e) {
-    return typeof e == `string` && [...e.replace(/[\x00-\x1f\x7f<>​-‏‪-‮⁠-⁯﻿]/gu, ``).trim().replace(/\s+/g, ` `)].slice(0, 16).join(``).trim() || null
+    return typeof e == `string` && [...e.replace(/[\x00-\x1f\x7f<>​-‏-⁠-⁯﻿]/gu, ``).trim().replace(/\s+/g, ` `)].slice(0, 16).join(``).trim() || null
 }
 function _r(e) {
     let t = typeof e == `object` && e ? e : {}
@@ -15027,7 +15027,7 @@ function Ul(e) {
 }
 async function Wl(e, t) {
     if (e === `page:online` && onlineServerAvailable === !1) {
-        q(`Play Online Unavailable`);
+        q(`Play Online Unavailable.`);
         return
     }
     if (P.unlock(),
