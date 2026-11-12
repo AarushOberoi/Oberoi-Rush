@@ -1,9 +1,9 @@
 // Counts everyone who currently has Oberoi Rush open (bot matches, online rooms, menus).
 // Every open tab POSTs /presence?id=<its own uuid> every 3 seconds (every 10 seconds when the tab is in the
 // background) and sends &leave=1 when it closes. Anyone seen in the last 20 seconds counts.
+// The caller is always counted, so the result is never below 1.
 // Needs a Redis store (Upstash, free, added from the Vercel Marketplace).
 
-// Vercel can prefix these names (for example STORAGE_KV_REST_API_URL), so look for any matching name.
 function find(pattern, skip) {
     for (const k of Object.keys(process.env))
         if (pattern.test(k) && !(skip && skip.test(k))) return process.env[k];
@@ -22,8 +22,10 @@ module.exports = async (req, res) => {
     const id = String((req.query && req.query.id) || ``);
     if (!/^[a-f0-9-]{36}$/.test(id))
         return res.status(400).json({ error: `bad id` });
+    const leaving = req.query.leave === `1`;
+    // If the store is missing or down, still report the caller as 1 player instead of an error.
     if (!URL_ || !TOKEN)
-        return res.status(503).json({ error: `presence store not configured` });
+        return res.status(200).json({ online: 1 });
 
     try {
         const now = Date.now();
@@ -31,17 +33,17 @@ module.exports = async (req, res) => {
             method: `POST`,
             headers: { Authorization: `Bearer ${TOKEN}`, "Content-Type": `application/json` },
             body: JSON.stringify([
-                req.query.leave === `1` ? [`ZREM`, KEY, id] : [`ZADD`, KEY, String(now), id],
+                leaving ? [`ZREM`, KEY, id] : [`ZADD`, KEY, String(now), id],
                 [`ZREMRANGEBYSCORE`, KEY, `0`, String(now - WINDOW_MS)],
                 [`ZCARD`, KEY]
             ])
         });
         if (!r.ok) throw new Error(`store ${r.status}`);
         const out = await r.json();
-        const online = Number(out[2] && out[2].result);
-        if (!Number.isSafeInteger(online) || online < 0) throw new Error(`bad count`);
-        return res.status(200).json({ online });
+        const count = Number(out[2] && out[2].result);
+        if (!Number.isSafeInteger(count) || count < 0) throw new Error(`bad count`);
+        return res.status(200).json({ online: leaving ? count : Math.max(1, count) });
     } catch (e) {
-        return res.status(502).json({ error: `presence unavailable` });
+        return res.status(200).json({ online: 1 });
     }
 };
