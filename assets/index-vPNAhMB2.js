@@ -1,4 +1,10 @@
 (function() {
+    var s = document.createElement(`style`);
+    s.id = `back-btn-fix`;
+    s.textContent = `.page-top .back-btn, .back-btn { margin-left: max(14px, env(safe-area-inset-left, 0px)) !important; }`;
+    (document.head || document.documentElement).appendChild(s);
+})();
+(function() {
     let e = document.createElement(`link`).relList;
     if (e && e.supports && e.supports(`modulepreload`))
         return;
