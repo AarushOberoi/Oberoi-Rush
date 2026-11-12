@@ -4,6 +4,17 @@
     s.textContent = `.page-top .back-btn, .back-btn { margin-left: max(14px, env(safe-area-inset-left, 0px)) !important; }`;
     (document.head || document.documentElement).appendChild(s);
 })();
+/* install fix: catch the install prompt early and make sure a manifest is linked */
+window.__oberoiInstall = null;
+window.addEventListener(`beforeinstallprompt`, function(e) { e.preventDefault(); window.__oberoiInstall = e; });
+(function() {
+    if (!document.querySelector(`link[rel="manifest"]`)) {
+        var l = document.createElement(`link`);
+        l.rel = `manifest`;
+        l.href = `/manifest.webmanifest`;
+        document.head.appendChild(l);
+    }
+})();
 (function() {
     let e = document.createElement(`link`).relList;
     if (e && e.supports && e.supports(`modulepreload`))
@@ -13843,7 +13854,7 @@ function xc() {
     let e = Ds(L.map);
     return yc(`home`, `
     <div class="corner corner-tl">${Z(`ARMORY`, `data-action="page:armory"`, `blue`, `cut-br`, `corner-btn`)}</div>
-    <div class="corner corner-tr">${hc()}${sl ? `<button class="round-icon" data-action="install" aria-label="Install Oberoi Rush on this device">${J(`install`)}</button>` : ``}${dl(`round-icon`)}<button class="round-icon" data-action="sound" aria-label="Sound ${P.enabled ? `on` : `off`}" aria-pressed="${P.enabled}">${J(P.enabled ? `sound` : `mute`)}</button></div>
+    <div class="corner corner-tr">${hc()}${!installed() ? `<button class="round-icon" data-action="install" aria-label="Install Oberoi Rush on this device">${J(`install`)}</button>` : ``}${dl(`round-icon`)}<button class="round-icon" data-action="sound" aria-label="Sound ${P.enabled ? `on` : `off`}" aria-pressed="${P.enabled}">${J(P.enabled ? `sound` : `mute`)}</button></div>
     <div class="logo-wrap">${ic()}</div>
     <div class="arcade-pilot" aria-hidden="true"><div class="pilot-orbit"></div>${rc(I.avatar, `idle`, `arcade-pilot-art`)}<span>GEAR UP. GO WILD.</span></div>
     <div class="arcade-stickers" aria-hidden="true"><span>JET. SHOOT. REPEAT.</span><b>BIG GUNS<br>BIG ENERGY</b><small>YOUR ARENA. YOUR RULES.</small></div>
@@ -14343,7 +14354,8 @@ function ol(e, t, n) {
       , l = c ? `<p class="death-how">${s}<span>${F(c)}</span>${t.killer ? t.killerAlive ? `<em>${t.killerHp} HP LEFT</em>` : `<em>ALSO DOWN</em>` : ``}</p>` : ``;
     return t.killer ? `<div class="death-card"><small>${js(z.config.mode) && t.killer.team === e.team ? `TEAMKILLED BY` : `FRAGGED BY`}</small><b style="--tag:${Fs(t.killer.color)}">${F(t.killer.name)}${t.killer.bot ? `<em class="bot">BOT</em>` : ``}</b>${l}</div>${a}` : `<div class="death-card self"><b>${t.cause === `FALL` ? `YOU FELL` : `SELF-DESTRUCT`}</b>${l}</div>${a}`
 }
-var sl = null
+var sl = window.__oberoiInstall || null
+var installed = () => window.matchMedia && window.matchMedia(`(display-mode: standalone)`).matches || navigator.standalone === !0
   , cl = document
   , ll = () => !!(document.fullscreenElement ?? cl.webkitFullscreenElement)
   , ul = () => !!(document.fullscreenEnabled || cl.webkitFullscreenEnabled) && !matchMedia(`(display-mode: fullscreen), (display-mode: standalone)`).matches;
@@ -14992,11 +15004,15 @@ async function Wl(e, t) {
         bl(`settings`);
     else if (e === `fullscreen`)
         fl();
-    else if (e === `install` && sl) {
-        let e = sl;
-        sl = null,
-        await e.prompt().catch( () => void 0),
-        R === `menu` && Q()
+    else if (e === `install`) {
+        if (sl) {
+            let e = sl;
+            sl = null,
+            window.__oberoiInstall = null,
+            await e.prompt().catch( () => void 0),
+            R === `menu` && Q()
+        } else
+            q(/iphone|ipad|ipod/i.test(navigator.userAgent) ? `On iPhone/iPad: tap the Share button, then Add to Home Screen.` : `Open your browser menu and choose Install app or Add to Home screen.`)
     } else if (e === `sound`)
         P.toggle(),
         R === `menu` && wo === `home` && Q(),
