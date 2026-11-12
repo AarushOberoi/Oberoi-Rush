@@ -6699,7 +6699,7 @@ function Er(e) {
     return {
         ...t,
         guestId: typeof n.guestId == `string` && /^[a-f0-9]{16}$/.test(n.guestId) ? n.guestId : t.guestId,
-        name: n.name === `Rookie` ? t.name : gr(n.name) ?? t.name,
+        name: n.name === `Rookie` || n.name === `Fleet Fan` ? t.name : gr(n.name) ?? t.name,
         color: Number.isInteger(n.color) && n.color >= 0 && n.color < v.length ? n.color : 0,
         volume: typeof n.volume == `number` && Number.isFinite(n.volume) ? Math.min(1, Math.max(0, n.volume)) : t.volume,
         touch: n.touch === !0,
@@ -13568,7 +13568,7 @@ var Us = e => {
 }
 ;
 function Ws(e, t=4.6) {
-    return `<path d="M18 12.5h-6.5a5 5 0 0 0-5 5v5a5 5 0 0 0 5 5H18v-7.5h-5M23 27.5v-15h11M23 20h8.5" fill="none" stroke="${e}" stroke-width="${t}" stroke-linecap="square" stroke-linejoin="miter"/>`
+    return `<image href="logo.png" x="4.5" y="10.4" width="31" height="19.3" preserveAspectRatio="xMidYMid meet"/>`
 }
 function Gs(e=l.colors.purple, t=l.colors.white, n=Y) {
     return `<rect x="1.5" y="1.5" width="37" height="37" rx="9" fill="${e}" stroke="${n}" stroke-width="3"/>${Ws(t)}`
