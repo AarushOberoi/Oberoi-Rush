@@ -14653,7 +14653,7 @@ async function Ml() {
     Fo = ``,
     Zo = performance.now();
     let e = new Promise( (e, t) => {
-        let n = new WebSocket(`wss://fleet-rush.sky-scrappers.workers.dev/ws`);
+        let n = new WebSocket(`${location.protocol === `https:` ? `wss` : `ws`}://${location.host}/ws`);
         To = n;
         let r = setTimeout( () => {
             n.close(),
