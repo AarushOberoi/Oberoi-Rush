@@ -2,8 +2,13 @@
 // The game POSTs /presence?id=<uuid> every 20 seconds; anyone seen in the last 50 seconds counts.
 // Needs a Redis store (Upstash, free, added from the Vercel Marketplace).
 
-const URL_ = process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL;
-const TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN;
+// Vercel can prefix these names (for example STORAGE_KV_REST_API_URL), so look for any matching name.
+function find(pattern, skip) {
+    for (const k of Object.keys(process.env))
+        if (pattern.test(k) && !(skip && skip.test(k))) return process.env[k];
+}
+const URL_ = process.env.UPSTASH_REDIS_REST_URL || process.env.KV_REST_API_URL || find(/(REST_API_URL|REDIS_REST_URL)$/);
+const TOKEN = process.env.UPSTASH_REDIS_REST_TOKEN || process.env.KV_REST_API_TOKEN || find(/(REST_API_TOKEN|REDIS_REST_TOKEN)$/, /READ_ONLY/);
 const KEY = `oberoi-rush:presence`;
 const WINDOW_MS = 50000;
 
