@@ -13859,6 +13859,8 @@ function xc() {
     <div class="arcade-pilot" aria-hidden="true"><div class="pilot-orbit"></div>${rc(I.avatar, `idle`, `arcade-pilot-art`)}<span>GEAR UP. GO WILD.</span></div>
     <div class="arcade-stickers" aria-hidden="true"><span>JET. SHOOT. REPEAT.</span><b>BIG GUNS<br>BIG ENERGY</b><small>YOUR ARENA. YOUR RULES.</small></div>
     <nav class="home-main" aria-label="Play">
+      <div id="online-count" class="online-count" role="status" aria-live="polite">${n()}</div>
+      ${Z(`PLAY ONLINE`, `data-action="page:online"`, `gold`, `cut-top`, `play-btn`)}
       ${Z(`PLAY VS BOTS`, `data-action="quick-bots"`, `blue`, `cut-none`, `play-btn`)}
       ${Z(`CUSTOM BATTLE`, `data-action="page:local"`, `blue`, `cut-bottom`, `play-btn`)}
       <p class="home-meta">${F(K(e.name))} · ${F(ks(L.mode).short)} · ${L.bots || 4} BOTS<br>A / D MOVE · SPACE JETPACK · MOUSE AIM + FIRE</p>
