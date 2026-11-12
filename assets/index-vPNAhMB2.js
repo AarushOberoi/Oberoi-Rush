@@ -53,46 +53,61 @@ function n() {
     return e === null ? t ? `0 PLAYERS ONLINE` : `CHECKING PLAYERS…` : `${e.toLocaleString()} ${e === 1 ? `PLAYER` : `PLAYERS`} ONLINE`
 }
 function r() {
-    let r = crypto.randomUUID();
-    try {
-        let e = localStorage.getItem(`fleet-presence-id`);
-        e && /^[a-f0-9-]{36}$/.test(e) && (r = e),
-        localStorage.setItem(`fleet-presence-id`, r)
-    } catch {}
-    let i = !1;
+    let r = crypto.randomUUID()
+      , i = !1
+      , o = 0;
     async function a() {
-        if (!(i || document.hidden)) {
-            i = !0;
-            try {
-                let t = await fetch(`/presence?id=${encodeURIComponent(r)}`, {
-                    method: `POST`,
-                    cache: `no-store`,
-                    signal: AbortSignal.timeout(8e3)
-                });
-                if (!t.ok)
-                    throw Error(`Presence unavailable`);
-                let n = await t.json();
-                if (!Number.isSafeInteger(n.online) || n.online < 0)
-                    throw Error(`Invalid count`);
-                e = n.online
-            } catch {
-                e = null
-            } finally {
-                t = !0,
-                i = !1;
-                let r = document.getElementById(`online-count`);
-                r && (r.textContent = n(),
-                r.classList.remove(`unavailable`))
-            }
+        if (i)
+            return;
+        i = !0;
+        try {
+            let res = await fetch(`/presence?id=${encodeURIComponent(r)}`, {
+                method: `POST`,
+                cache: `no-store`,
+                signal: AbortSignal.timeout(4e3)
+            });
+            if (!res.ok)
+                throw Error(`Presence unavailable`);
+            let data = await res.json();
+            if (!Number.isSafeInteger(data.online) || data.online < 0)
+                throw Error(`Invalid count`);
+            e = data.online
+        } catch {
+            e = null
+        } finally {
+            t = !0,
+            i = !1;
+            let el = document.getElementById(`online-count`);
+            el && (el.textContent = n(),
+            el.classList.remove(`unavailable`))
         }
     }
+    function c() {
+        clearTimeout(o),
+        o = setTimeout(async () => {
+            await a(),
+            c()
+        }
+        , document.hidden ? 1e4 : 3e3)
+    }
     a(),
-    setInterval( () => void a(), 2e4),
+    c(),
     document.addEventListener(`visibilitychange`, () => {
-        document.hidden || a()
+        a(),
+        c()
     }
     ),
-    window.addEventListener(`online`, () => void a())
+    window.addEventListener(`online`, () => void a()),
+    window.addEventListener(`pageshow`, ev => {
+        ev.persisted && a()
+    }
+    ),
+    window.addEventListener(`pagehide`, () => {
+        try {
+            navigator.sendBeacon(`/presence?id=${encodeURIComponent(r)}&leave=1`)
+        } catch {}
+    }
+    )
 }
 var i = class {
     adaptive;
