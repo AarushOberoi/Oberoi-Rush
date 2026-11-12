@@ -15027,7 +15027,7 @@ function Ul(e) {
 }
 async function Wl(e, t) {
     if (e === `page:online` && onlineServerAvailable === !1) {
-        q(`PLAY ONLINE UNAVAILABLE.`);
+        q(`Play Online Unavailable`);
         return
     }
     if (P.unlock(),
