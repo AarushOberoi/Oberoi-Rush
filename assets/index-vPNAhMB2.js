@@ -13886,7 +13886,7 @@ function xc() {
       <p class="home-meta">${F(K(e.name))} · ${F(ks(L.mode).short)} · ${L.bots || 4} BOTS<br>A / D MOVE · SPACE JETPACK · MOUSE AIM + FIRE</p>
       ${Sc()}<p class="phone-tip">TWO THUMBS TO PLAY · TURN PHONE SIDEWAYS FOR MORE ROOM</p>
     </nav>
-    <footer class="home-foot">${F(l.community.toUpperCase())} EDITION · BOT BATTLES</footer>
+    <footer class="home-foot">${F(l.community.toUpperCase())} EDITION · ONLINE ROOMS + BOT BATTLES</footer>
     <div class="corner corner-bl">${Z(`AVATAR`, `data-action="page:avatar"`, `blue`, `cut-br`, `corner-btn`)}${Z(`SETTINGS`, `data-action="settings"`, `blue`, `cut-br`, `corner-btn`)}</div>
     <div class="corner corner-br">${Z(`TUTORIAL`, `data-action="training"`, `blue`, `cut-bl`, `corner-btn`)}${Z(`STATS`, `data-action="page:stats"`, `blue`, `cut-bl`, `corner-btn`)}</div>`)
 }
