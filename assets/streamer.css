@@ -1,0 +1,22 @@
+.room-code-wrap {
+  justify-self: end;
+  align-items: center;
+  gap: 6px;
+  display: flex;
+}
+
+.room-code-wrap .room-code {
+  min-width: 0;
+}
+
+@media (max-width: 640px) {
+  .room-code-wrap .mini-btn {
+    min-width: 36px;
+    padding: 0 6px;
+    font-size: 9px;
+  }
+
+  .room-code-wrap .room-code small {
+    display: none;
+  }
+}
